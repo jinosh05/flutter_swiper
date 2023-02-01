@@ -39,9 +39,9 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   _MyHomePageState createState() => new _MyHomePageState();
@@ -57,10 +57,10 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget buildListTile(
-      BuildContext context, String title, String subtitle, String url) {
+      BuildContext context, String title, String subtitle, String? url) {
     return new ListTile(
       onTap: () {
-        Navigator.of(context).pushNamed(url);
+        Navigator.of(context).pushNamed(url!);
       },
       isThreeLine: true,
       dense: false,
@@ -80,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return new Scaffold(
       appBar: new AppBar(
-        title: Text(widget.title),
+        title: Text(widget.title!),
       ),
       body: new ListView(
         children: render(context, [
@@ -215,12 +215,12 @@ class ExampleCustomPagination extends StatelessWidget {
                 pagination: new SwiperPagination(
                     margin: new EdgeInsets.all(0.0),
                     builder: new SwiperCustomPagination(builder:
-                        (BuildContext context, SwiperPluginConfig config) {
+                        (BuildContext context, SwiperPluginConfig? config) {
                       return new ConstrainedBox(
                         child: new Container(
                             color: Colors.white,
                             child: new Text(
-                              "${titles[config.activeIndex]} ${config.activeIndex + 1}/${config.itemCount}",
+                              "${titles[config!.activeIndex!]} ${config.activeIndex! + 1}/${config.itemCount}",
                               style: new TextStyle(fontSize: 20.0),
                             )),
                         constraints: new BoxConstraints.expand(height: 50.0),
@@ -242,12 +242,12 @@ class ExampleCustomPagination extends StatelessWidget {
                 pagination: new SwiperPagination(
                     margin: new EdgeInsets.all(0.0),
                     builder: new SwiperCustomPagination(builder:
-                        (BuildContext context, SwiperPluginConfig config) {
+                        (BuildContext context, SwiperPluginConfig? config) {
                       return new ConstrainedBox(
                         child: new Row(
                           children: <Widget>[
                             new Text(
-                              "${titles[config.activeIndex]} ${config.activeIndex + 1}/${config.itemCount}",
+                              "${titles[config!.activeIndex!]} ${config.activeIndex! + 1}/${config.itemCount}",
                               style: TextStyle(fontSize: 20.0),
                             ),
                             new Expanded(
@@ -318,9 +318,9 @@ class ExamplePhone extends StatelessWidget {
 }
 
 class ScaffoldWidget extends StatelessWidget {
-  final Widget child;
-  final String title;
-  final List<Widget> actions;
+  final Widget? child;
+  final String? title;
+  final List<Widget>? actions;
 
   ScaffoldWidget({this.child, this.title, this.actions});
 
@@ -328,7 +328,7 @@ class ScaffoldWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text(title),
+        title: new Text(title!),
         actions: actions,
       ),
       body: child,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_page_indicator/flutter_page_indicator.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+
 import 'config.dart';
 import 'forms/form_widget.dart';
 
@@ -13,41 +14,41 @@ class ExampleCustom extends StatefulWidget {
 
 class _ExampleCustomState extends State<ExampleCustom> {
   //properties want to custom
-  int _itemCount;
+  int? _itemCount;
 
-  bool _loop;
+  late bool _loop;
 
-  bool _autoplay;
+  late bool _autoplay;
 
-  int _autoplayDely;
+  late int _autoplayDely;
 
-  double _padding;
+  double? _padding;
 
-  bool _outer;
+  late bool _outer;
 
-  double _radius;
+  double? _radius;
 
-  double _viewportFraction;
+  double? _viewportFraction;
 
-  SwiperLayout _layout;
+  SwiperLayout? _layout;
 
-  int _currentIndex;
+  int? _currentIndex;
 
-  double _scale;
+  double? _scale;
 
-  Axis _scrollDirection;
+  Axis? _scrollDirection;
 
-  Curve _curve;
+  late Curve _curve;
 
-  double _fade;
+  double? _fade;
 
-  bool _autoplayDisableOnInteraction;
+  late bool _autoplayDisableOnInteraction;
 
-  CustomLayoutOption customLayoutOption;
+  CustomLayoutOption? customLayoutOption;
 
   Widget _buildItem(BuildContext context, int index) {
     return ClipRRect(
-      borderRadius: new BorderRadius.all(new Radius.circular(_radius)),
+      borderRadius: new BorderRadius.all(new Radius.circular(_radius!)),
       child: new Image.asset(
         images[index % images.length],
         fit: BoxFit.fill,
@@ -120,16 +121,16 @@ class _ExampleCustomState extends State<ExampleCustom> {
       scale: _scale,
       itemWidth: 300.0,
       controller: _controller,
-      layout: _layout,
+      layout: _layout!,
       outer: _outer,
       itemHeight: 200.0,
-      viewportFraction: _viewportFraction,
+      viewportFraction: _viewportFraction!,
       autoplayDelay: _autoplayDely,
       loop: _loop,
       autoplay: _autoplay,
       itemBuilder: _buildItem,
-      itemCount: _itemCount,
-      scrollDirection: _scrollDirection,
+      itemCount: _itemCount!,
+      scrollDirection: _scrollDirection!,
       indicatorLayout: PageIndicatorLayout.COLOR,
       autoplayDisableOnInteraction: _autoplayDisableOnInteraction,
       pagination: new SwiperPagination(
@@ -138,7 +139,7 @@ class _ExampleCustomState extends State<ExampleCustom> {
     );
   }
 
-  SwiperController _controller;
+  SwiperController? _controller;
   TextEditingController numberController = new TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -156,13 +157,13 @@ class _ExampleCustomState extends State<ExampleCustom> {
             children: <Widget>[
               new RaisedButton(
                 onPressed: () {
-                  _controller.previous(animation: true);
+                  _controller!.previous(animation: true);
                 },
                 child: new Text("Prev"),
               ),
               new RaisedButton(
                 onPressed: () {
-                  _controller.next(animation: true);
+                  _controller!.next(animation: true);
                 },
                 child: new Text("Next"),
               ),
@@ -192,7 +193,7 @@ class _ExampleCustomState extends State<ExampleCustom> {
                     SwiperLayout.TINDER,
                     SwiperLayout.CUSTOM
                   ],
-                  valueChanged: (value) {
+                  valueChanged: (dynamic value) {
                     _layout = value;
                     setState(() {});
                   })),
@@ -238,8 +239,8 @@ class _ExampleCustomState extends State<ExampleCustom> {
               step: 5.0,
               min: 0.0,
               max: 30.0,
-              onChangeValue: (num value) {
-                _padding = value.toDouble();
+              onChangeValue: (num? value) {
+                _padding = value!.toDouble();
                 setState(() {});
               },
             ),
@@ -251,8 +252,8 @@ class _ExampleCustomState extends State<ExampleCustom> {
               step: 0.1,
               min: 0.0,
               max: 1.0,
-              onChangeValue: (num value) {
-                _scale = value.toDouble();
+              onChangeValue: (num? value) {
+                _scale = value!.toDouble();
                 setState(() {});
               },
             ),
@@ -264,8 +265,8 @@ class _ExampleCustomState extends State<ExampleCustom> {
               step: 0.1,
               min: 0.0,
               max: 1.0,
-              onChangeValue: (num value) {
-                _fade = value.toDouble();
+              onChangeValue: (num? value) {
+                _fade = value!.toDouble();
                 setState(() {});
               },
             ),
@@ -277,8 +278,8 @@ class _ExampleCustomState extends State<ExampleCustom> {
               step: 1,
               min: 0,
               max: 100,
-              onChangeValue: (num value) {
-                _itemCount = value.toInt();
+              onChangeValue: (num? value) {
+                _itemCount = value!.toInt();
                 setState(() {});
               },
             ),
@@ -291,8 +292,8 @@ class _ExampleCustomState extends State<ExampleCustom> {
               step: 1.0,
               min: 0.0,
               max: 30.0,
-              onChangeValue: (num value) {
-                this._radius = value.toDouble();
+              onChangeValue: (num? value) {
+                this._radius = value?.toDouble();
                 setState(() {});
               },
             ),
@@ -305,8 +306,8 @@ class _ExampleCustomState extends State<ExampleCustom> {
               step: 0.1,
               max: 1.0,
               min: 0.5,
-              onChangeValue: (num value) {
-                _viewportFraction = value.toDouble();
+              onChangeValue: (num? value) {
+                _viewportFraction = value!.toDouble();
                 setState(() {});
               },
             ),
@@ -325,7 +326,7 @@ class _ExampleCustomState extends State<ExampleCustom> {
                     Curves.bounceIn,
                     Curves.fastOutSlowIn
                   ],
-                  valueChanged: (value) {
+                  valueChanged: (dynamic value) {
                     _curve = value;
                     setState(() {});
                   })),
