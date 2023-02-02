@@ -1,12 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_page_indicator/flutter_page_indicator.dart';
-
 import 'package:flutter_swiper/flutter_swiper.dart';
-import 'src/ExampleCustom.dart';
-import 'src/config.dart';
-import 'src/ExampleSwiperInScrollView.dart';
 
-import 'package:flutter/cupertino.dart';
+import 'src/ExampleCustom.dart';
+import 'src/ExampleSwiperInScrollView.dart';
+import 'src/config.dart';
 
 void main() => runApp(new MyApp());
 
@@ -117,7 +116,6 @@ class ExampleHorizontal extends StatelessWidget {
               fit: BoxFit.fill,
             );
           },
-
           indicatorLayout: PageIndicatorLayout.COLOR,
           autoplay: true,
           itemCount: images.length,

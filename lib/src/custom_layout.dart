@@ -337,7 +337,7 @@ class TranslateTransformBuilder extends TransformBuilder<Offset> {
 
 class CustomLayoutOption {
   final List<TransformBuilder> builders = [];
-  final int startIndex;
+  int? startIndex;
   final int? stateCount;
 
   CustomLayoutOption({this.stateCount, required this.startIndex})
@@ -366,7 +366,7 @@ class CustomLayoutOption {
 }
 
 class _CustomLayoutSwiper extends _SubSwiper {
-  final CustomLayoutOption option;
+  final CustomLayoutOption? option;
 
   _CustomLayoutSwiper(
       {required this.option,
@@ -407,20 +407,20 @@ class _CustomLayoutState extends _CustomLayoutStateBase<_CustomLayoutSwiper> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _startIndex = widget.option.startIndex;
-    _animationCount = widget.option.stateCount;
+    _startIndex = widget.option!.startIndex!;
+    _animationCount = widget.option!.stateCount;
   }
 
   @override
   void didUpdateWidget(_CustomLayoutSwiper oldWidget) {
-    _startIndex = widget.option.startIndex;
-    _animationCount = widget.option.stateCount;
+    _startIndex = widget.option!.startIndex!;
+    _animationCount = widget.option!.stateCount;
     super.didUpdateWidget(oldWidget);
   }
 
   @override
   Widget _buildItem(int index, int realIndex, double animationValue) {
-    List<TransformBuilder> builders = widget.option.builders;
+    List<TransformBuilder> builders = widget.option!.builders;
 
     Widget child = new SizedBox(
         width: widget.itemWidth ?? double.infinity,

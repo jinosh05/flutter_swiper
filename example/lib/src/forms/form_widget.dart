@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class FormWidget extends StatelessWidget {
   final String? label;
@@ -85,11 +85,11 @@ class _FormSelectState extends State<FormSelect> {
                         ),
                       ),
                       new Center(
-                        child: new RaisedButton(
+                        child: new ElevatedButton(
                           onPressed: () {
                             if (_selectedIndex >= 0) {
-                              widget
-                                  .valueChanged!(widget.values![_selectedIndex]);
+                              widget.valueChanged!(
+                                  widget.values![_selectedIndex]);
                             }
 
                             setState(() {});

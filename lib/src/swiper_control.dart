@@ -37,9 +37,9 @@ class SwiperControl extends SwiperPlugin {
       behavior: HitTestBehavior.opaque,
       onTap: () {
         if (previous) {
-          config!.controller.previous(animation: true);
+          config!.controller!.previous(animation: true);
         } else {
-          config!.controller.next(animation: true);
+          config!.controller!.next(animation: true);
         }
       },
       child: Padding(

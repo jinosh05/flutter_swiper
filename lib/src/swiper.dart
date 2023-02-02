@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter_page_indicator/flutter_page_indicator.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_page_indicator/flutter_page_indicator.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:transformer_page_view/transformer_page_view.dart';
 
 part 'custom_layout.dart';
@@ -97,7 +97,7 @@ class Swiper extends StatefulWidget {
   final double viewportFraction;
 
   /// Build in layouts
-  final SwiperLayout layout;
+  final SwiperLayout? layout;
 
   /// this value is valid when layout == SwiperLayout.CUSTOM
   final CustomLayoutOption? customLayoutOption;
@@ -187,7 +187,7 @@ class Swiper extends StatefulWidget {
     bool outer: false,
     double scale: 1.0,
   }) {
-    assert(children != null, "children must not be null");
+    assert(children.isNotEmpty, "children must not be empty");
 
     return new Swiper(
         transformer: transformer,

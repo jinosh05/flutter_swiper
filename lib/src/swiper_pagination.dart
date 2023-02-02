@@ -1,8 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
-
+import 'package:flutter/material.dart';
 import 'package:flutter_page_indicator/flutter_page_indicator.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
 
 class FractionPaginationBuilder extends SwiperPlugin {
   ///color ,if set null , will be Theme.of(context).scaffoldBackgroundColor
@@ -236,13 +235,13 @@ typedef Widget SwiperPaginationBuilder(
     BuildContext context, SwiperPluginConfig? config);
 
 class SwiperCustomPagination extends SwiperPlugin {
-  final SwiperPaginationBuilder builder;
+  final SwiperPaginationBuilder? builder;
 
   SwiperCustomPagination({required this.builder}) : assert(builder != null);
 
   @override
   Widget build(BuildContext context, SwiperPluginConfig? config) {
-    return builder(context, config);
+    return builder!(context, config);
   }
 }
 
